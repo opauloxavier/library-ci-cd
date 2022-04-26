@@ -8,7 +8,7 @@ import {
   pipelineName,
   primaryOutputDirectory,
   pullRequestProjectName,
-  releaseProjectName,
+  // releaseProjectName,
 } from './config/constants';
 import { Construct } from 'constructs';
 
@@ -29,7 +29,7 @@ export class InfrastructureStage extends cdk.Stage {
 export class CdkPipeline extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-    const oauth = cdk.SecretValue.secretsManager('my-github-token');
+
     const synth = new pipelines.ShellStep('Synth', {
       input: pipelines.CodePipelineSource.gitHub(
         'opauloxavier/library-ci-cd',
@@ -46,6 +46,7 @@ export class CdkPipeline extends cdk.Stack {
         'npm ci',
         'npm run build',
         'npx cdk synth',
+        'pwd',
       ],
       primaryOutputDirectory,
     });

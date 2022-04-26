@@ -12,5 +12,3 @@ const builderToolsEnv: cdk.Environment = {
 new CdkPipeline(app, 'ComponentLibraryStack', {
   env: builderToolsEnv,
 });
-
-// new CdkPipeline(app, "PackageCdk", {env: builderToolsEnv});
