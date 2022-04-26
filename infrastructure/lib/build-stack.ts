@@ -2,11 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import * as codebuild from 'aws-cdk-lib/aws-codebuild';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as logs from 'aws-cdk-lib/aws-logs';
-import {
-  defaultBaseBranch,
-  GITHUB_TOKEN,
-  SECRET_GIT_MANAGER,
-} from './config/constants';
+import { defaultBaseBranch, GITHUB_TOKEN } from './config/constants';
 import { Construct } from 'constructs';
 
 export interface BuildStackProps extends cdk.StackProps {
@@ -72,8 +68,8 @@ export class BuildStack extends cdk.Stack {
         variables: {
           CI: 'true',
         },
-        'secrets-manager': {
-          GITHUB_TOKEN: SECRET_GIT_MANAGER,
+        'parameter-store': {
+          GITHUB_TOKEN: '	/cdk-bootstrap/github-token',
         },
       },
       phases: {

@@ -5,9 +5,7 @@ import * as logs from 'aws-cdk-lib/aws-logs';
 import {
   defaultBaseBranch,
   domainName,
-  GITHUB_TOKEN,
   repositoryName,
-  SECRET_GIT_MANAGER,
 } from './config/constants';
 import { Construct } from 'constructs';
 
@@ -88,10 +86,9 @@ export class ReleaseStack extends cdk.Stack {
           CI: 'true',
           NPM_DIST_TAG: 'latest',
           TWINE_USERNAME: 'aws',
-          // GITHUB_TOKEN: GITHUB_TOKEN,
         },
-        'secrets-manager': {
-          GITHUB_TOKEN: SECRET_GIT_MANAGER,
+        'parameter-store': {
+          GITHUB_TOKEN: '	/cdk-bootstrap/github-token',
         },
       },
       phases: {
