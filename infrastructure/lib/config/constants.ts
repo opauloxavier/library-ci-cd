@@ -8,4 +8,7 @@ export const repositoryName = 'junglescout-packages';
 export const defaultBaseBranch = 'main';
 export const gitHub = { repo: 'library-ci-cd', owner: 'opauloxavier' };
 export const primaryOutputDirectory = 'cdk.out';
+
 export const REPO_STRING = 'opauloxavier/library-ci-cd';
+export const SECRET_GIT_MANAGER =
+  'arn:aws:secretsmanager:us-east-1:027483264577:secret:github-token-H7Y0In';
