@@ -2,7 +2,7 @@
   "name": "cdk-bootstrap",
   "version": "0.1.0",
   "bin": {
-    "cdk-bootstrap": "bin/cdk-bootstrap.js"
+    "cdk-bootstrap": "bin/library-cdk.js"
   },
   "scripts": {
     "build": "tsc",

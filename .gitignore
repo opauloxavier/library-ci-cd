@@ -5,4 +5,4 @@
 node_modules
 .cache
 dist
-infrastructure/cdk.out
+infrastructure/cdk.out/*
