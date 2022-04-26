@@ -2,7 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import * as codebuild from 'aws-cdk-lib/aws-codebuild';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as logs from 'aws-cdk-lib/aws-logs';
-import { defaultBaseBranch, GITHUB_TOKEN } from './config/constants';
+import { defaultBaseBranch } from './config/constants';
 import { Construct } from 'constructs';
 
 export interface BuildStackProps extends cdk.StackProps {
