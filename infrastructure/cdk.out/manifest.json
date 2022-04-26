@@ -1,0 +1,173 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "assembly-ComponentLibraryStack-InfraStage": {
+      "type": "cdk:cloud-assembly",
+      "properties": {
+        "directoryName": "assembly-ComponentLibraryStack-InfraStage",
+        "displayName": "ComponentLibraryStack/InfraStage"
+      }
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "ComponentLibraryStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "ComponentLibraryStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "ComponentLibraryStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://027483264577/us-east-1",
+      "properties": {
+        "templateFile": "ComponentLibraryStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::027483264577:role/cdk-hnb659fds-deploy-role-027483264577-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::027483264577:role/cdk-hnb659fds-cfn-exec-role-027483264577-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-027483264577-us-east-1/635cdc5d3e4ecde0b5304e87278477403136dc071ca53203060d85c0acfbf7be.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "ComponentLibraryStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::027483264577:role/cdk-hnb659fds-lookup-role-027483264577-us-east-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "ComponentLibraryStack.assets"
+      ],
+      "metadata": {
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/ArtifactsBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineArtifactsBucket830AD299"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/ArtifactsBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineArtifactsBucketPolicyF0459275"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineRoleE3F28D69"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineRoleDefaultPolicy5CDBB5CF"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineB1A1BEA2"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Source/opauloxavier_library-ci-cd/WebhookResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineSourceopauloxavierlibrarycicdWebhookResource5999F471"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Build/Synth/CdkBuildProject/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineBuildSynthCdkBuildProjectRole6EF1C931"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Build/Synth/CdkBuildProject/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineBuildSynthCdkBuildProjectRoleDefaultPolicyA91CEA78"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Build/Synth/CdkBuildProject/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineBuildSynthCdkBuildProject976C10F3"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Build/Synth/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineBuildSynthCodePipelineActionRole82C33DE3"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/Build/Synth/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineBuildSynthCodePipelineActionRoleDefaultPolicy3A4A9998"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/UpdatePipeline/SelfMutate/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineUpdatePipelineSelfMutateCodePipelineActionRole8C352762"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/UpdatePipeline/SelfMutate/CodePipelineActionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineUpdatePipelineSelfMutateCodePipelineActionRoleDefaultPolicyC27D33C0"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/Pipeline/InfraStage/Approval/CodePipelineActionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineInfraStageApprovalCodePipelineActionRoleF4384C88"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/UpdatePipeline/SelfMutation/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineUpdatePipelineSelfMutationRole9B65198C"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/UpdatePipeline/SelfMutation/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineUpdatePipelineSelfMutationRoleDefaultPolicyAA8CCA2A"
+          }
+        ],
+        "/ComponentLibraryStack/CdkPipeline/UpdatePipeline/SelfMutation/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CdkPipelineUpdatePipelineSelfMutation81360810"
+          }
+        ],
+        "/ComponentLibraryStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/ComponentLibraryStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/ComponentLibraryStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "ComponentLibraryStack"
+    }
+  }
+}

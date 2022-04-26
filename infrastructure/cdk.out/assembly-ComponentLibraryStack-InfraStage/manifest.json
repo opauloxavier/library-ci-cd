@@ -1,0 +1,89 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "ComponentLibraryStackInfraStageComponentLibraryPullRequestBuildC94E947C.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "ComponentLibraryStackInfraStageComponentLibraryPullRequestBuildC94E947C.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "ComponentLibraryStackInfraStageComponentLibraryPullRequestBuildC94E947C": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "ComponentLibraryStackInfraStageComponentLibraryPullRequestBuildC94E947C.template.json",
+        "validateOnSynth": true,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c562fe3ccd2f9bb87a3e41f4710437a067a31595a22189649167e3b1e1f54c29.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "ComponentLibraryStackInfraStageComponentLibraryPullRequestBuildC94E947C.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        },
+        "stackName": "InfraStage-ComponentLibraryPullRequestBuild"
+      },
+      "dependencies": [
+        "ComponentLibraryStackInfraStageComponentLibraryPullRequestBuildC94E947C.assets"
+      ],
+      "metadata": {
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LogGroupF5B46931"
+          }
+        ],
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/ComponentLibraryPullRequestBuild/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ComponentLibraryPullRequestBuildRole98AB7A94"
+          }
+        ],
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/ComponentLibraryPullRequestBuild/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ComponentLibraryPullRequestBuildRoleDefaultPolicyED892170"
+          }
+        ],
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/ComponentLibraryPullRequestBuild/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ComponentLibraryPullRequestBuildE2EFCDBA"
+          }
+        ],
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "ComponentLibraryStack/InfraStage/ComponentLibraryPullRequestBuild"
+    }
+  }
+}
