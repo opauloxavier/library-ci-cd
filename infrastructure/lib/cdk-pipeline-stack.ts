@@ -41,6 +41,7 @@ export class CdkPipeline extends cdk.Stack {
       commands: [
         'npm install -g npm@6.14.15',
         'npm install --global yarn',
+        'yarn install',
         'cd infrastructure',
         'npm ci',
         'npm run build',
@@ -48,6 +49,7 @@ export class CdkPipeline extends cdk.Stack {
       ],
       primaryOutputDirectory,
     });
+
     const pipeline = new pipelines.CodePipeline(this, 'CdkPipeline', {
       synth,
       pipelineName,
