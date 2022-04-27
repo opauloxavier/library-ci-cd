@@ -69,7 +69,7 @@ export class BuildStack extends cdk.Stack {
           CI: 'true',
         },
         'parameter-store': {
-          GITHUB_TOKEN: '	/cdk-bootstrap/github-token',
+          GITHUB_TOKEN: '/cdk-bootstrap/github-token',
         },
       },
       phases: {

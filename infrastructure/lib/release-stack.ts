@@ -88,7 +88,7 @@ export class ReleaseStack extends cdk.Stack {
           TWINE_USERNAME: 'aws',
         },
         'parameter-store': {
-          GITHUB_TOKEN: '	/cdk-bootstrap/github-token',
+          GITHUB_TOKEN: '/cdk-bootstrap/github-token',
         },
       },
       phases: {

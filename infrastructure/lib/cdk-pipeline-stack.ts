@@ -8,7 +8,8 @@ import {
   pipelineName,
   primaryOutputDirectory,
   pullRequestProjectName,
-  // releaseProjectName,
+  releaseProjectName,
+  REPO_STRING,
 } from './config/constants';
 import { Construct } from 'constructs';
 
@@ -29,16 +30,10 @@ export class InfrastructureStage extends cdk.Stage {
 export class CdkPipeline extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
     const synth = new pipelines.ShellStep('Synth', {
       input: pipelines.CodePipelineSource.gitHub(
-        'opauloxavier/library-ci-cd',
-        defaultBaseBranch,
-        {
-          authentication: cdk.SecretValue.secretsManager(
-            'arn:aws:secretsmanager:us-east-1:027483264577:secret:github-token-H7Y0In'
-          ),
-        }
+        REPO_STRING,
+        defaultBaseBranch
       ),
       commands: [
         'npm install -g npm@latest',
@@ -46,7 +41,6 @@ export class CdkPipeline extends cdk.Stack {
         'npm ci',
         'npm run build',
         'npx cdk synth',
-        'pwd',
       ],
       primaryOutputDirectory,
     });
