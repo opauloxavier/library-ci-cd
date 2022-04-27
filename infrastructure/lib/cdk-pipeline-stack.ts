@@ -71,11 +71,11 @@ export class CdkPipeline extends cdk.Stack {
     pipeline.addWave('Publish', {
       pre: [new pipelines.ManualApprovalStep('Approval')],
       post: [
-        new pipelines.CodeBuildStep('Change Version', {
+        new pipelines.CodeBuildStep('VersionBump', {
           partialBuildSpec: codebuild.BuildSpec.fromObject(PublishBuildSpec()),
           commands: [],
         }),
-        new pipelines.CodeBuildStep('publish', {
+        new pipelines.CodeBuildStep('Publish', {
           partialBuildSpec: codebuild.BuildSpec.fromObject(
             changeVersionBuildSpec()
           ),
