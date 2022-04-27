@@ -5,12 +5,12 @@ export const UnitTestBuildSpec = ({
 }: ServiceBuildspecProps = {}): BuildSpecObject => ({
   version: 0.2,
   phases: {
-    // install: {
-    //   commands: [
-    //     // ...privatePackageProfile,
-    //     installDeps ? 'yarn install' : 'echo "Dependencies already installed"',
-    //   ],
-    // },
+    install: {
+      commands: [
+        //     // ...privatePackageProfile,
+        installDeps ? 'yarn install' : 'echo "Dependencies already installed"',
+      ],
+    },
     build: {
       commands: [
         // 'mkdir -p ./test-results/jest',
