@@ -1,17 +1,18 @@
 import * as cdk from 'aws-cdk-lib';
+import * as codebuild from 'aws-cdk-lib/aws-codebuild';
 import * as pipelines from 'aws-cdk-lib/pipelines';
 import { BuildStack } from './build-stack';
-import { ReleaseStack } from './release-stack';
 import {
   defaultBaseBranch,
   gitHub,
   pipelineName,
   primaryOutputDirectory,
   pullRequestProjectName,
-  releaseProjectName,
   REPO_STRING,
 } from './config/constants';
 import { Construct } from 'constructs';
+import { LintBuildspec } from './build-specs/LintBuildspec';
+import { UnitTestBuildSpec } from './build-specs/UnitTestBuildspec';
 
 export class InfrastructureStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props?: cdk.StageProps) {
@@ -37,6 +38,7 @@ export class CdkPipeline extends cdk.Stack {
       ),
       commands: [
         'npm install -g npm@6.14.15',
+        'npm install --global yarn',
         'cd infrastructure',
         'npm ci',
         'npm run build',
@@ -48,8 +50,22 @@ export class CdkPipeline extends cdk.Stack {
       synth,
       pipelineName,
     });
-    pipeline.addStage(new InfrastructureStage(this, 'InfraStage'), {
-      pre: [new pipelines.ManualApprovalStep('Approval')],
+
+    pipeline.addWave('QA', {
+      pre: [
+        new pipelines.CodeBuildStep('Lint', {
+          partialBuildSpec: codebuild.BuildSpec.fromObject(LintBuildspec()),
+          commands: [],
+        }),
+        new pipelines.CodeBuildStep('Test', {
+          partialBuildSpec: codebuild.BuildSpec.fromObject(UnitTestBuildSpec()),
+          commands: [],
+        }),
+      ],
     });
+
+    // pipeline.addStage(new InfrastructureStage(this, 'InfraStage'), {
+    //   pre: [new pipelines.ManualApprovalStep('Approval')],
+    // });
   }
 }

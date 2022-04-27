@@ -10,3 +10,4 @@ export const gitHub = { repo: 'library-ci-cd', owner: 'opauloxavier' };
 export const primaryOutputDirectory = 'infrastructure/cdk.out';
 
 export const REPO_STRING = 'opauloxavier/library-ci-cd';
+export const builderToolsSharedAccount = '171626355229';
