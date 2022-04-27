@@ -36,7 +36,7 @@ export class CdkPipeline extends cdk.Stack {
         defaultBaseBranch
       ),
       commands: [
-        'npm install -g npm@latest',
+        'npm install -g npm@6.14.15',
         'cd infrastructure',
         'npm ci',
         'npm run build',
