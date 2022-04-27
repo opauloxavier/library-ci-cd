@@ -8,16 +8,16 @@ export const LintBuildspec = ({
     shell: 'bash',
   },
   phases: {
-    install: {
-      commands: [
-        // ...privatePackageProfile,
-        installDeps ? 'yarn install' : 'echo "Dependencies already installed"',
-      ],
-    },
+    // install: {
+    //   commands: [
+    //     // ...privatePackageProfile,
+    //     installDeps ? 'yarn install' : 'echo "Dependencies already installed"',
+    //   ],
+    // },
     build: {
       commands: [
         // Lint
-        'yarn lint',
+        'echo "Lint works!"',
       ],
     },
   },

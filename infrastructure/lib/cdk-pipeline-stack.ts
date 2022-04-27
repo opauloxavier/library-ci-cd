@@ -13,6 +13,8 @@ import {
 import { Construct } from 'constructs';
 import { LintBuildspec } from './build-specs/LintBuildspec';
 import { UnitTestBuildSpec } from './build-specs/UnitTestBuildspec';
+import { PublishBuildSpec } from './build-specs/publishBuildspec';
+import { changeVersionBuildSpec } from './build-specs/ChangeVersionBuildSpec';
 
 export class InfrastructureStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props?: cdk.StageProps) {
@@ -64,6 +66,21 @@ export class CdkPipeline extends cdk.Stack {
       ],
     });
 
+    pipeline.addWave('QA', {
+      pre: [new pipelines.ManualApprovalStep('Approval')],
+      post: [
+        new pipelines.CodeBuildStep('Change Version', {
+          partialBuildSpec: codebuild.BuildSpec.fromObject(PublishBuildSpec()),
+          commands: [],
+        }),
+        new pipelines.CodeBuildStep('publish', {
+          partialBuildSpec: codebuild.BuildSpec.fromObject(
+            changeVersionBuildSpec()
+          ),
+          commands: [],
+        }),
+      ],
+    });
     // pipeline.addStage(new InfrastructureStage(this, 'InfraStage'), {
     //   pre: [new pipelines.ManualApprovalStep('Approval')],
     // });
