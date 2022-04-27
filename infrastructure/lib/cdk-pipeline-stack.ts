@@ -13,8 +13,8 @@ import {
 import { Construct } from 'constructs';
 import { LintBuildspec } from './build-specs/LintBuildspec';
 import { UnitTestBuildSpec } from './build-specs/UnitTestBuildspec';
-import { PublishBuildSpec } from './build-specs/publishBuildspec';
 import { changeVersionBuildSpec } from './build-specs/ChangeVersionBuildSpec';
+import { PublishBuildSpec } from './build-specs/PublishBuildspec';
 
 export class InfrastructureStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props?: cdk.StageProps) {
