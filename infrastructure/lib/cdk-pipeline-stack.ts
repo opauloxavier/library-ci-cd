@@ -68,7 +68,7 @@ export class CdkPipeline extends cdk.Stack {
       ],
     });
 
-    pipeline.addWave('QA', {
+    pipeline.addWave('Publish', {
       pre: [new pipelines.ManualApprovalStep('Approval')],
       post: [
         new pipelines.CodeBuildStep('Change Version', {
