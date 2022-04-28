@@ -1,5 +1,5 @@
 {
-  "convention" : {
+  "convention": {
     "commitTypes": [
       "feat",
       "fix",
@@ -19,13 +19,8 @@
     "issueRegexPattern": "(^|\\s)#\\d+(\\s|$)"
   },
 
-  "changelog" : {
-    "commitTypes": [
-      "feat",
-      "fix",
-      "perf",
-      "merge"
-    ],
+  "changelog": {
+    "commitTypes": ["feat", "fix", "perf", "merge"],
     "includeInvalidCommits": true,
     "commitIgnoreRegexPattern": "^WIP ",
     "headlines": {
@@ -36,8 +31,8 @@
       "breakingChange": "BREAKING CHANGES"
     },
 
-    "commitUrl": "https://github.com/ACCOUNT/REPOSITORY/commit/%commit%",
-    "commitRangeUrl": "https://github.com/ACCOUNT/REPOSITORY/compare/%from%...%to%?diff=split",
-    "issueUrl": "https://github.com/ACCOUNT/REPOSITORY/issues/%issue%"
+    "commitUrl": "https://github.com/opauloxavier/library-ci-cd/commit/%commit%",
+    "commitRangeUrl": "https://github.com/opauloxavier/library-ci-cd/compare/%from%...%to%?diff=split",
+    "issueUrl": "https://github.com/opauloxavier/library-ci-cd/issues/%issue%"
   }
 }
