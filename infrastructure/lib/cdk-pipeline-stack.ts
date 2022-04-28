@@ -15,6 +15,7 @@ import { LintBuildspec } from './build-specs/LintBuildspec';
 import { UnitTestBuildSpec } from './build-specs/UnitTestBuildspec';
 import { changeVersionBuildSpec } from './build-specs/ChangeVersionBuildSpec';
 import { PublishBuildSpec } from './build-specs/PublishBuildspec';
+import { commonQaBuildspec } from './build-specs/commonQaBuildspec';
 
 export class InfrastructureStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props?: cdk.StageProps) {
@@ -33,6 +34,7 @@ export class InfrastructureStage extends cdk.Stage {
 export class CdkPipeline extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+
     const synth = new pipelines.ShellStep('Synth', {
       input: pipelines.CodePipelineSource.gitHub(
         REPO_STRING,
@@ -49,6 +51,8 @@ export class CdkPipeline extends cdk.Stack {
       ],
       primaryOutputDirectory,
     });
+
+    this.createMainPipelinePullRequestBuild();
 
     const pipeline = new pipelines.CodePipeline(this, 'CdkPipeline', {
       synth,
@@ -87,4 +91,24 @@ export class CdkPipeline extends cdk.Stack {
     //   pre: [new pipelines.ManualApprovalStep('Approval')],
     // });
   }
+  private createMainPipelinePullRequestBuild() {
+    const source = codebuild.Source.gitHub({
+      owner: gitHub.owner,
+      repo: gitHub.repo,
+      webhookFilters: defaultWebhookFilters,
+    });
+
+    new codebuild.Project(this, 'LibraryPipelineQaPullRequestProject', {
+      source,
+      buildSpec: codebuild.BuildSpec.fromObject(commonQaBuildspec()),
+    });
+  }
 }
+
+const defaultWebhookFilters = [
+  codebuild.FilterGroup.inEventOf(
+    codebuild.EventAction.PULL_REQUEST_CREATED,
+    codebuild.EventAction.PULL_REQUEST_UPDATED,
+    codebuild.EventAction.PULL_REQUEST_REOPENED
+  ).andBaseBranchIs(defaultBaseBranch),
+];
