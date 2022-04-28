@@ -98,8 +98,14 @@ export class CdkPipeline extends cdk.Stack {
       webhookFilters: defaultWebhookFilters,
     });
 
+    const buildEnvironment = {
+      buildImage: codebuild.LinuxBuildImage.STANDARD_5_0,
+      privileged: true,
+    };
+
     new codebuild.Project(this, 'LibraryPipelineQaPullRequestProject', {
       source,
+      environment: buildEnvironment,
       buildSpec: codebuild.BuildSpec.fromObject(commonQaBuildspec()),
     });
   }
