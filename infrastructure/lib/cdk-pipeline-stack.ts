@@ -35,8 +35,6 @@ export class CdkPipeline extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    this.createMainPipelinePullRequestBuild();
-
     const synth = new pipelines.ShellStep('Synth', {
       input: pipelines.CodePipelineSource.gitHub(
         REPO_STRING,
@@ -53,6 +51,8 @@ export class CdkPipeline extends cdk.Stack {
       ],
       primaryOutputDirectory,
     });
+
+    this.createMainPipelinePullRequestBuild();
 
     const pipeline = new pipelines.CodePipeline(this, 'CdkPipeline', {
       synth,
