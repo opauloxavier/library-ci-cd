@@ -73,24 +73,25 @@ export class CdkPipeline extends cdk.Stack {
     });
 
     pipeline.addWave('Publish', {
-      pre: [new pipelines.ManualApprovalStep('Approval')],
-      post: [
+      // pre: [new pipelines.ManualApprovalStep('Approval')],
+      pre: [
         new pipelines.CodeBuildStep('VersionBump', {
           partialBuildSpec: codebuild.BuildSpec.fromObject(PublishBuildSpec()),
           commands: [],
         }),
-        new pipelines.CodeBuildStep('Publish', {
-          partialBuildSpec: codebuild.BuildSpec.fromObject(
-            changeVersionBuildSpec()
-          ),
-          commands: [],
-        }),
+        // new pipelines.CodeBuildStep('Publish', {
+        //   partialBuildSpec: codebuild.BuildSpec.fromObject(
+        //     changeVersionBuildSpec()
+        //   ),
+        //   commands: [],
+        // }),
       ],
     });
     // pipeline.addStage(new InfrastructureStage(this, 'InfraStage'), {
     //   pre: [new pipelines.ManualApprovalStep('Approval')],
     // });
   }
+
   private createMainPipelinePullRequestBuild() {
     const source = codebuild.Source.gitHub({
       owner: gitHub.owner,
